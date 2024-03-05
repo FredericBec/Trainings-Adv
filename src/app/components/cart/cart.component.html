@@ -14,14 +14,14 @@
                     <td>{{training.id}}</td>
                     <td>{{training.name}}</td>
                     <td>{{training.quantity}}</td>
-                    <td>{{training.price}}</td>
+                    <td>{{training.price | number : '0.2'}}</td>
                     <td style="width: 160px;"><a class="btn btn-danger" (click)="onRemoveFromCart(training)">Supprimer</a></td>
                 </tr>
                 <tr>
                     <td>Total</td>
                     <td></td>
                     <td></td>
-                    <td>{{total}} €</td>
+                    <td>{{total | currency : 'EUR'}}</td>
                     <td></td>
                 </tr>
             </tbody>
