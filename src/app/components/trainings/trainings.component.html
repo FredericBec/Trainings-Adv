@@ -1,0 +1,29 @@
+<div class="container">
+    <ng-container *ngIf="listTrainings">
+        <table class="table table-striped table-hover shadow-lg">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOM</th>
+                    <th>DESCRIPTION</th>
+                    <th>DURATION</th>
+                    <th>PRIX</th>
+                    <th>QUANTITE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let training of listTrainings">
+                    <td>{{training.id}}</td>
+                    <td>{{training.name}}</td>
+                    <td>{{training.description}}</td>
+                    <td>{{training.duration}}</td>
+                    <td>{{training.price}} €</td>
+                    <!-- input avec contrôle de quantité saisie, quanité minimum et maximum pour la sélection avec les flèches -->
+                    <td><input type="number" name="quantity" style="width: 60px;" min="1" max="10" [(ngModel)]="training.quantity"></td>
+                    <!-- bouton désactivé si une mauvaise quantité est saisie -->
+                    <td><button class="btn btn-primary" (click)="onAddToCart(training)">Ajouter</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>
