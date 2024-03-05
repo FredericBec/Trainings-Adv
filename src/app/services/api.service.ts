@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { Training } from '../model/training.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class apiService {
+export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http : HttpClient) { }
 
   public getTrainings(){
     return this.http.get<Training[]>(environment.host + "/trainings");
