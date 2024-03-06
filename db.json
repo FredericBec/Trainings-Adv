@@ -1,53 +1,72 @@
 {
-    "trainings" : [
-        {
-            "id" : 1,
-            "name" : "Java",
-            "description" : "Formation Java SE 8 sur 5 jours",
-            "price" : 1500,
-            "quantity" : 1
-        },
-        {
-            "id" : 2,
-            "name" : "DotNet",
-            "description" : "Formation DotNet sur 3 jours",
-            "price" : 1000,
-            "quantity" : 1
-        },
-        {
-            "id" : 3,
-            "name" : "Python",
-            "description" : "Formation Python/Django sur 5 jours",
-            "price" : 1500,
-            "quantity" : 1
-        },
-        {
-            "id" : 4,
-            "name" : "Php",
-            "description" : "Initiation au Dev/Web avec Php sur 4 jours",
-            "price" : 1300,
-            "quantity" : 1
-        },
-        {
-            "id" : 5,
-            "name" : "NodeJs",
-            "description" : "Prise en main de NodeJs/Express sur 2 jours",
-            "price" : 1400,
-            "quantity" : 1
-        },
-        {
-            "id" : 6,
-            "name" : "Java Avancé",
-            "description" : "Formation Java Avancé/Bdd sur 3 jours",
-            "price" : 1200,
-            "quantity" : 1
-        },
-        {
-            "id" : 7,
-            "name" : "Angular",
-            "description" : "Initiation à Angular sur 4 jours",
-            "price" : 1500,
-            "quantity" : 1
-        }
-    ]
+  "trainings": [
+    {
+      "id": 1,
+      "name": "Java",
+      "description": "Formation Java SE 8 sur 5 jours",
+      "price": 1500,
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "name": "DotNet",
+      "description": "Formation DotNet sur 3 jours",
+      "price": 1000,
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "name": "Python",
+      "description": "Formation Python/Django sur 5 jours",
+      "price": 1500,
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "name": "Php",
+      "description": "Initiation au Dev/Web avec Php sur 4 jours",
+      "price": 1300,
+      "quantity": 1
+    },
+    {
+      "id": 5,
+      "name": "NodeJs",
+      "description": "Prise en main de NodeJs/Express sur 2 jours",
+      "price": 1400,
+      "quantity": 1
+    },
+    {
+      "id": 6,
+      "name": "Java Avancé",
+      "description": "Formation Java Avancé/Bdd sur 3 jours",
+      "price": 1200,
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "name": "Angular",
+      "description": "Initiation à Angular sur 4 jours",
+      "price": 1500,
+      "quantity": 1
+    },
+    {
+      "id": 8,
+      "name": "React",
+      "description": "Formation à React sur 4 jours",
+      "price": 2500,
+      "quantity": 1
+    }
+  ],
+  "users": [
+    {
+      "email": "fred@free.fr",
+      "password": "1234",
+      "roles": ["Admin", "User"]
+    },
+    {
+      "email": "martin@gmail.com",
+      "password": "1234",
+      "roles": ["User"]
+    }
+  ]
 }
