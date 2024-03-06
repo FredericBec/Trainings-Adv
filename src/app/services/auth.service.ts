@@ -38,7 +38,14 @@ export class AuthService {
   }
 
   saveUser(user : User){
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', btoa(JSON.stringify(user)));
+  }
+
+  getUser() : User{
+    let userData = localStorage.getItem('user');
+    if(userData)
+      return JSON.parse(atob(userData));
+    else return new User("", "", []);
   }
 
   getUsers(): Observable<User[]>{
