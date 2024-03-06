@@ -10,15 +10,30 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   isLoggedIn: boolean = false;
-  constructor(private http : HttpClient) { }
+  users : User[] = [];
+
+  constructor(private http : HttpClient) { 
+    this.getUsers().subscribe(users => {
+      this.users = users;
+      console.log(users);
+    });
+  }
 
   login(email : string, password : string): Observable<boolean>{
-    const isLoggedIn = (email == this.getUser().email && password == this.getUser().password);
-    return of(isLoggedIn).pipe(delay(1000), tap(isLoggedIn => this.isLoggedIn = isLoggedIn));
+    console.log(this.users)
+    const user = this.users.find(u => u.email === email && u.password === password);
+    if(user){
+      const isLoggedIn = (email == user.email && password == user.password);
+      console.log(isLoggedIn);
+      localStorage.setItem('isLoggedIn', isLoggedIn ? "true" : "false");
+      return of(isLoggedIn).pipe(delay(1000), tap(isLoggedIn => this.isLoggedIn = isLoggedIn));
+    }else {
+      return of(false);
+    }
   }
 
   logout(){
-    localStorage.removeItem('user');
+    localStorage.removeItem('isLoggedIn');
     this.isLoggedIn = false;
   }
 
@@ -26,9 +41,7 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  getUser() : User{
-    let user = localStorage.getItem('user');
-    if(user) return JSON.parse(user);
-    else return new User("", "", []);
+  getUsers(): Observable<User[]>{
+    return this.http.get<any>(environment.host + "/users")
   }
 }
