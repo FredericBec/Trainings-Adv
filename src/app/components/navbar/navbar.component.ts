@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
     let storeData = localStorage.getItem('isLoggedIn');
     if(storeData != null && storeData == "true"){
       this.isUserLoggedIn = true;
-      console.log(this.isUserLoggedIn);
     }else {
       this.isUserLoggedIn = false;
     }
