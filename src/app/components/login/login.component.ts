@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
 
   onSaveUser(form : FormGroup){
     if(form.valid){
-      this.authService.saveUser(new User(form.value.email, form.value.password, []));
+      const roles = this.authService.getRoleByEmail(form.value.email);
+      this.authService.saveUser(new User(form.value.email, form.value.password, roles));
     }
   }
 

@@ -10,13 +10,21 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   isLoggedIn: boolean = false;
-  users : User[] = [];
+  users : User[];
 
   constructor(private http : HttpClient) { 
-    this.getUsers().subscribe(users => {
-      this.users = users;
-      console.log(users);
-    });
+    this.users = [
+      {
+        "email": "fred@free.fr",
+        "password": "1234",
+        "roles": ["Admin", "User"]
+      },
+      {
+        "email": "martin@gmail.com",
+        "password": "1234",
+        "roles": ["User"]
+      }
+    ];
   }
 
   login(email : string, password : string): Observable<boolean>{
@@ -48,7 +56,13 @@ export class AuthService {
     else return new User("", "", []);
   }
 
-  getUsers(): Observable<User[]>{
-    return this.http.get<any>(environment.host + "/users")
+  getRoleByEmail(email : string){
+    const user = this.users.find(u => u.email === email);
+    if(user) return user.roles;
+    else return [];
+  }
+
+  isAdmin() : boolean{
+    return this.getUser().roles.includes('Admin');
   }
 }
