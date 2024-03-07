@@ -7,12 +7,15 @@ import { OrderComponent } from './components/order/order.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminGuard } from './components/admin.guard';
 
 const routes: Routes = [
   {path : 'trainings', component : TrainingsComponent},
   { path : 'cart' , component : CartComponent },
   {path : 'customer', component : CustomerComponent},
   {path : 'order', component : OrderComponent},
+  {path : 'admin', component : AdminComponent, canActivate : [AdminGuard]},
   {path : 'login', component : LoginComponent},
   {path : 'logout', component : LogoutComponent},
   {path : '', redirectTo : 'trainings', pathMatch : 'full'},
