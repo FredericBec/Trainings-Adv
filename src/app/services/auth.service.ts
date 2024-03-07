@@ -12,7 +12,7 @@ export class AuthService {
   isLoggedIn: boolean = false;
   users : User[];
 
-  constructor(private http : HttpClient) { 
+  constructor() { 
     this.users = [
       {
         "email": "fred@free.fr",
@@ -42,6 +42,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
     this.isLoggedIn = false;
   }
 
