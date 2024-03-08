@@ -6,7 +6,6 @@
                     <th>ID</th>
                     <th>NOM</th>
                     <th>DESCRIPTION</th>
-                    <th>DURATION</th>
                     <th>PRIX</th>
                     <th>QUANTITE</th>
                 </tr>
@@ -16,7 +15,6 @@
                     <td>{{training.id}}</td>
                     <td>{{training.name}}</td>
                     <td>{{training.description}}</td>
-                    <td>{{training.duration}}</td>
                     <td>{{training.price}} €</td>
                     <!-- input avec contrôle de quantité saisie, quanité minimum et maximum pour la sélection avec les flèches -->
                     <td><input type="number" name="quantity" style="width: 60px;" min="1" max="10" [(ngModel)]="training.quantity"></td>
