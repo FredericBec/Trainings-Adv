@@ -1,16 +1,24 @@
 <div class="container">
-    <div class="col-md-3">
+    <div class="col-md-3 rounded-lg shadow-lg">
         <form [formGroup]="userForm" (ngSubmit)="onSaveUser(userForm)">
-            <div>
+            <div class="m-2">
                 <label for="email">E-mail : </label>
                 <input type="email" required formControlName="email" class="form-control" name="email">
+                <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="alert text-danger">
+                    <div *ngIf="email && email.errors?.['required']">L'e-mail est requis</div>
+                    <div *ngIf="email && email.errors?.['pattern']">Saisissez une adresse mail valide (ex : ex.exemple@exemple.fr)</div>
+                </div>
             </div>
-            <div>
+            <div class="m-2">
                 <label for="password">Mot de passe : </label>
                 <input type="password" required formControlName="password" class="form-control" name="password">
+                <div *ngIf="password && password.invalid && (password.dirty || password.touched)" class="alert text-danger">
+                    <div *ngIf="password && password.errors?.['required']">Le mot de passe est requis</div>
+                    <div *ngIf="password && password.errors?.['pattern']">Saisissez un mot de passe valide</div>
+                </div>
             </div>
             <div>
-                <a href="#" class="btn btn-primary" (click)="onLogin()">Se connecter</a>
+                <a href="#" class="btn btn-primary m-2" (click)="onLogin()">Se connecter</a>
             </div>
         </form>
     </div>
