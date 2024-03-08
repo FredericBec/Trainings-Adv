@@ -37,6 +37,7 @@ export class AdminComponent implements OnInit {
 
   onDeleteTraining(id : number){
     this.apiService.deleteTraining(id).subscribe();
+    this.getAllTrainings();
   }
 
 }
