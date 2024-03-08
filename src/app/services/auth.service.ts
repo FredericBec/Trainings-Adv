@@ -66,4 +66,8 @@ export class AuthService {
   isAdmin() : boolean{
     return this.getUser().roles.includes('Admin');
   }
+
+  isUser(): boolean{
+    return this.getUser().roles.includes('User');
+  }
 }
