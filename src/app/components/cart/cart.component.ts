@@ -27,7 +27,7 @@ export class CartComponent implements OnInit {
   }
 
   onNewOrder(){
-    if(localStorage.getItem('isLoggedIn')){
+    if(this.authService.isUser() || this.authService.isAdmin()){
       this.router.navigateByUrl('customer');
     }else{
       this.orderAlert = true;
