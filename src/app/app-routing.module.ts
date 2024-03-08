@@ -10,12 +10,13 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminGuard } from './components/admin.guard';
 import { TrainingComponent } from './components/training/training.component';
+import { UserGuard } from './components/user.guard';
 
 const routes: Routes = [
   {path : 'trainings', component : TrainingsComponent},
   { path : 'cart' , component : CartComponent },
-  {path : 'customer', component : CustomerComponent},
-  {path : 'order', component : OrderComponent},
+  {path : 'customer', component : CustomerComponent, canActivate : [UserGuard]},
+  {path : 'order', component : OrderComponent, canActivate : [UserGuard]},
   {path : 'admin', component : AdminComponent, canActivate : [AdminGuard]},
   {path : 'training', component : TrainingComponent, canActivate : [AdminGuard]},
   {path : 'training/:id', component : TrainingComponent, canActivate : [AdminGuard]},
