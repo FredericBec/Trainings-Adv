@@ -26,6 +26,9 @@
                 </tr>
             </tbody>
         </table>
+        <div *ngIf="orderAlert" class="alert text-danger">
+            <span>Vous devez vous connecter pour passer commande</span>
+        </div>
         <button class="btn btn-success" (click)="onNewOrder()">Commander</button>
     </ng-container>
 </div>

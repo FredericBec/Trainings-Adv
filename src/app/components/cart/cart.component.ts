@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
 
   cart : Training[] | undefined;
   total : number = 0;
+  orderAlert : boolean = false;
   constructor(private cartService : CartService, private authService : AuthService, private router : Router) { }
 
   ngOnInit(): void {
@@ -26,8 +27,10 @@ export class CartComponent implements OnInit {
   }
 
   onNewOrder(){
-    if(this.authService.isLoggedIn){
+    if(localStorage.getItem('isLoggedIn')){
       this.router.navigateByUrl('customer');
+    }else{
+      this.orderAlert = true;
     }
   }
 }
