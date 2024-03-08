@@ -13,6 +13,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { TrainingComponent } from './components/training/training.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { LogoutComponent } from './components/logout/logout.component';
     PageNotFoundComponent,
     LoginComponent,
     NavbarComponent,
-    LogoutComponent
+    LogoutComponent,
+    AdminComponent,
+    TrainingComponent
   ],
   imports: [
     BrowserModule,
