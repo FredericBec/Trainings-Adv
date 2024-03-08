@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminGuard } from './components/admin.guard';
+import { TrainingComponent } from './components/training/training.component';
 
 const routes: Routes = [
   {path : 'trainings', component : TrainingsComponent},
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path : 'customer', component : CustomerComponent},
   {path : 'order', component : OrderComponent},
   {path : 'admin', component : AdminComponent, canActivate : [AdminGuard]},
+  {path : 'training', component : TrainingComponent, canActivate : [AdminGuard]},
+  {path : 'training/:id', component : TrainingComponent, canActivate : [AdminGuard]},
   {path : 'login', component : LoginComponent},
   {path : 'logout', component : LogoutComponent},
   {path : '', redirectTo : 'trainings', pathMatch : 'full'},
