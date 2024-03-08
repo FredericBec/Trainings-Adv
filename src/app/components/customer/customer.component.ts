@@ -15,6 +15,11 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Ajout d'un nouveau client 
+   * et navigation vers la page du récapitulatif de la commande
+   * @param customer 
+   */
   onSaveCustomer(customer : Customer){
     this.cartService.saveCustomer(customer);
     this.router.navigateByUrl('order');

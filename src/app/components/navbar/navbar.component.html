@@ -8,11 +8,11 @@
         <a class="nav-link" routerLink="/cart">Contenu du panier</a>
       </li>
       <li *ngIf="this.authService.isAdmin()" class="navbar-item">
-        <a href="" class="nav-link" routerLink="/admin">Administration</a>
+        <a href="#" class="nav-link" routerLink="/admin">Administration</a>
       </li>
       <li class="navbar-item">
         <div *ngIf="isUserLoggedIn else isLogOut">
-          <a class="nav-link" routerLink="/logout">Déconnexion</a>
+          <a href="#" class="nav-link" routerLink="/logout">Déconnexion</a>
         </div>
         <ng-template #isLogOut>
           <a class="nav-link" routerLink="/login">Connexion</a>

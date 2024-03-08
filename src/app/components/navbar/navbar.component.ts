@@ -12,6 +12,10 @@ export class NavbarComponent implements OnInit {
   constructor(public authService : AuthService) { 
   }
 
+  /**
+   * A l'initialisation du composant,
+   * vérification si l'utilisateur est connecté
+   */
   ngOnInit(): void {
     let storeData = localStorage.getItem('isLoggedIn');
     if(storeData != null && storeData == "true"){

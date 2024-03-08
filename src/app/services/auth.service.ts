@@ -9,9 +9,11 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
+  //Structure de données
   isLoggedIn: boolean = false;
   users : User[];
 
+  //initialisation du tableau users
   constructor() { 
     this.users = [
       {
@@ -27,6 +29,10 @@ export class AuthService {
     ];
   }
 
+  /**
+   * Fonction permettant de vérifier si l'utilisateur est connecté
+   * @return vrai si l'e-mail et le mot de passe sont les mêmes que ceux du tableau users 
+   */
   login(email : string, password : string): Observable<boolean>{
     console.log(this.users)
     const user = this.users.find(u => u.email === email && u.password === password);
@@ -40,16 +46,27 @@ export class AuthService {
     }
   }
 
+  /**
+   * Fonction qui permet la déconnexion de l'utilisateur
+   */
   logout(){
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('user');
     this.isLoggedIn = false;
   }
 
+  /**
+   * Fonction qui stocke les données cryptées dans le local storage
+   * @param user 
+   */
   saveUser(user : User){
     localStorage.setItem('user', btoa(JSON.stringify(user)));
   }
 
+  /**
+   * Fonction pour récupérer les données de l'utilisateur depuis le local storage
+   * @returns les données décryptées ou un utilisateur vide
+   */
   getUser() : User{
     let userData = localStorage.getItem('user');
     if(userData)
@@ -57,16 +74,30 @@ export class AuthService {
     else return new User("", "", []);
   }
 
+  /**
+   * Fonction pour récupérer les rôles de l'utilisateur
+   * en fonction de son e-mail
+   * @param email de l'utilisateur trouvé
+   * @returns les roles de l'utilisateur
+   */
   getRoleByEmail(email : string){
     const user = this.users.find(u => u.email === email);
     if(user) return user.roles;
     else return [];
   }
 
+  /**
+   * Fonction pour vérifier que le rôle de l'utilisateur
+   * @returns vrai si l'utilisateur a le rôle Admin
+   */
   isAdmin() : boolean{
     return this.getUser().roles.includes('Admin');
   }
 
+  /**
+   * Fonction pour vérifier que le rôle de l'utilisateur
+   * @returns vrai si l'utilisateur a le rôle User
+   */
   isUser(): boolean{
     return this.getUser().roles.includes('User');
   }

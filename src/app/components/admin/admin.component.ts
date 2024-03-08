@@ -10,14 +10,21 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AdminComponent implements OnInit {
 
+  //Struture de données
   listTrainings : Training[] | undefined;
   error: any;
+
+  //injection du service api et du router
   constructor(private apiService : ApiService, private router : Router) { }
 
   ngOnInit(): void {
     this.getAllTrainings();
   }
 
+  /**
+   * Fonction qui permet de récupérer la liste des formations
+   * depuis la base de données
+   */
   getAllTrainings(){
     this.apiService.getTrainings().subscribe({
       next : (data) => this.listTrainings = data,
@@ -26,15 +33,27 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  /**
+   * Fonction pour rediriger vers le formulaire d'ajout
+   */
   goToCreateForm(){
     this.router.navigateByUrl('training');
   }
 
+  /**
+   * Fonction permettant de rediriger vers le
+   * formulaire de modification
+   * @param training la formation sélectionnée
+   */
   goToUpdateForm(training : Training){
     console.log(training);
     this.router.navigate(['/training', training.id]);
   }
 
+  /**
+   * Fonction pour supprimer la formation sélectionnée
+   * @param id de la formation sélectionnée
+   */
   onDeleteTraining(id : number){
     this.apiService.deleteTraining(id).subscribe();
     this.getAllTrainings();

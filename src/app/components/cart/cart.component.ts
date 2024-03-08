@@ -21,11 +21,20 @@ export class CartComponent implements OnInit {
     this.total = this.cartService.getTotal();
   }
 
+  /**
+   * Fonction pour supprimer la formation selectionnée
+   * et mise àjour du montant du panier
+   * @param training formation selectionnée
+   */
   onRemoveFromCart(training : Training){
     this.cartService.removeTraining(training);
     this.cart = this.cartService.getCart();
   }
 
+  /**
+   * Fonction pour rediriger vers le formulaire client
+   * seulement si c'est un utilisateur ou un administrateur
+   */
   onNewOrder(){
     if(this.authService.isUser() || this.authService.isAdmin()){
       this.router.navigateByUrl('customer');

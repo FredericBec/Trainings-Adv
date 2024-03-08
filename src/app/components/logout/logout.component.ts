@@ -9,8 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LogoutComponent implements OnInit {
 
+  //injection du service auth et du router
   constructor(private authService : AuthService, private router : Router) { }
 
+  /**
+   * A l'initialisation du composant, appel de la fonction logout du service auth
+   * et redirection vers la page par défaut
+   */
   ngOnInit(): void {
     this.authService.logout();
     this.router.navigateByUrl('');
