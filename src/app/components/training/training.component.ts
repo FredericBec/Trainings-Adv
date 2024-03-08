@@ -28,7 +28,6 @@ export class TrainingComponent implements OnInit {
     const trainingId = +urlSegments[urlSegments.length - 1];
     this.isUpdateForm = !isNaN(trainingId);
     this.trainingForm = this.formBuilder.group({
-      id : [trainingId ? trainingId : '', [Validators.required, Validators.pattern('[0-9]')]],
       name : ['', [Validators.required]],
       description : ['', [Validators.required]],
       price : ['', [Validators.required]]
@@ -46,11 +45,23 @@ export class TrainingComponent implements OnInit {
     }
   }
 
+  get name(){
+    return this.trainingForm.get('name');
+  }
+
+  get description(){
+    return this.trainingForm.get('description');
+  }
+
+  get price(){
+    return this.trainingForm.get('price');
+  }
+
   onSubmit(form : FormGroup){
     if(form.valid){
       console.log(this.isUpdateForm);
       if(this.isUpdateForm) this.apiService.updateTraining(form.value, form.value.id).subscribe();
-      else this.apiService.addNewTraining(new Training(form.value.id, form.value.name, form.value.description, form.value.price, 1)).subscribe();
+      else this.apiService.addNewTraining(form.value).subscribe();
     }
   }
 
