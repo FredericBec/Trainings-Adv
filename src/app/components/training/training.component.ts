@@ -36,6 +36,7 @@ export class TrainingComponent implements OnInit {
     const trainingId = +urlSegments[urlSegments.length - 1];
     this.isUpdateForm = !isNaN(trainingId);
     this.trainingForm = this.formBuilder.group({
+      id : [trainingId ? trainingId : ''],
       name : ['', [Validators.required]],
       description : ['', [Validators.required]],
       price : ['', [Validators.required]]
