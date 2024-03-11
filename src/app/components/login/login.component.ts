@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
     if(form.valid){
       const roles = this.authService.getRoleByEmail(form.value.email);
       this.authService.saveUser(new User(form.value.email, form.value.password, roles));
+    }else{
+      alert('vous devez saisir vos identifiants');
     }
   }
 
